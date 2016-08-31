@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LittleBlackBook.Views"
         mc:Ignorable="d"
-        Title="MainView" Height="350" Width="525">
+        Title="MainView" Height="600" Width="800">
     <Grid>
-        <ListView ItemsSource="{Binding Contacts}"/>
+        <DataGrid x:Name="ContactsDataGrid" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="top" Height="130" ItemsSource="{Binding Contacts}" AutoGenerateColumns="False" SelectionChanged="ContactsDataGrid_SelectionChanged" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date Added" Width="SizeToCells" IsReadOnly="True" Binding="{Binding Date_Added, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}"/>
+                <DataGridTextColumn Header="Name" Width="SizeToCells" IsReadOnly="True" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Surname" Width="SizeToCells" IsReadOnly="True" Binding="{Binding Surname}"/>
+                <DataGridTextColumn Header="Land Line" Width="SizeToCells" IsReadOnly="True" Binding="{Binding Land_Line}"/>
+                <DataGridTextColumn Header="Cell" Width="SizeToCells" IsReadOnly="True" Binding="{Binding Cell}"/>
+                <DataGridTextColumn Header="Email" Width="SizeToCells" IsReadOnly="True" Binding="{Binding Email}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="0,145,0,201" Width="507" >
+            <Label Content="Name:"/>
+            <TextBox Text="{Binding CurrentContact.Name}"></TextBox>
+            <Label Content="Surname:"/>
+            <TextBox Text="{Binding CurrentContact.Surname}"></TextBox>
+            <Label Content="Land Line:"/>
+            <TextBox Text="{Binding CurrentContact.Land_Line}"></TextBox>
+            <Label Content="Cell:"/>
+            <TextBox Text="{Binding CurrentContact.Cell}"></TextBox>
+            <Label Content="Email:"/>
+            <TextBox Text="{Binding CurrentContact.Email}"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button x:Name="AddButton" Width="100" Height="20" Margin="10" Content="Add" Click="AddButton_Click"></Button>
+            <Button x:Name="SaveButton" Width="100" Height="20" Margin="10" Content="Save" Click="SaveButton_Click"></Button>
+            <Button x:Name="DeleteButton" Width="100" Height="20" Margin="10" Content="Delete" Click="DeleteButton_Click"></Button>
+        </StackPanel>
     </Grid>
 </Window>

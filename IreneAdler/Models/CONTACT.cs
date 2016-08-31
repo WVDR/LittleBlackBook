@@ -14,7 +14,7 @@ namespace IreneAdler.Models
     
     public partial class CONTACT
     {
-        public System.Guid Contact_ID { get; set; }
+        public long Contact_ID { get; set; }
         public System.DateTime Date_Added { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

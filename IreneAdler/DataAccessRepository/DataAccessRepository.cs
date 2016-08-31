@@ -8,7 +8,7 @@ using System.Web;
 
 namespace IreneAdler.DataAccessRepository
 {
-    public class ClsDataAccessRepository : IDataAccessRepository<CONTACT, Guid>
+    public class ClsDataAccessRepository : IDataAccessRepository<CONTACT, long>
     {
         //The dendency for the DbContext specified the current class. 
         [Dependency]
@@ -20,7 +20,7 @@ namespace IreneAdler.DataAccessRepository
             return ctx.CONTACTS.ToList();
         }
         //Get Specific Employee based on Id
-        public CONTACT Get(Guid id)
+        public CONTACT Get(long id)
         {
             return ctx.CONTACTS.Find(id);
         }
@@ -32,7 +32,7 @@ namespace IreneAdler.DataAccessRepository
             ctx.SaveChanges();
         }
         //Update Exisitng Employee
-        public void Put(Guid id, CONTACT entity)
+        public void Put(long id, CONTACT entity)
         {
             var contact = ctx.CONTACTS.Find(id);
             if (contact != null)
@@ -47,7 +47,7 @@ namespace IreneAdler.DataAccessRepository
             }
         }
         //Delete an Employee based on Id
-        public void Delete(Guid id)
+        public void Delete(long id)
         {
             var Emp = ctx.CONTACTS.Find(id);
             if (Emp != null)

@@ -1,4 +1,5 @@
-﻿using LittleBlackBook.ViewModels;
+﻿using IreneAdler.Models;
+using LittleBlackBook.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,29 @@ namespace LittleBlackBook.Views
         private MainViewModel _viewmodel = new MainViewModel();
         public MainView()
         {
-            InitializeComponent();
+            InitializeComponent();            
             DataContext = _viewmodel;
-        }        
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            _viewmodel.AddContact();
+
+        }
+
+        private void ContactsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _viewmodel.SetCurrentContact(ContactsDataGrid.SelectedItem);
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            _viewmodel.SaveCurrentContact();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            _viewmodel.DeleteCurrentContact();
+        }
     }
 }

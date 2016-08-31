@@ -12,9 +12,9 @@ namespace IreneAdler.Controllers
 {
     public class ContactApiController : ApiController
     {
-        private IDataAccessRepository<CONTACT, Guid> _repository;
+        private IDataAccessRepository<CONTACT, long> _repository;
         //Inject the DataAccessRepository using Construction Injection 
-        public ContactApiController(IDataAccessRepository<CONTACT, Guid> Repository)
+        public ContactApiController(IDataAccessRepository<CONTACT, long> Repository)
         {
             _repository = Repository;
         }
@@ -26,7 +26,7 @@ namespace IreneAdler.Controllers
 
         // GET api/<controller>/5
         [ResponseType(typeof(CONTACT))]
-        public IHttpActionResult Get(Guid id)
+        public IHttpActionResult Get(long id)
         {
             return Ok(_repository.Get(id));
         }
@@ -41,14 +41,14 @@ namespace IreneAdler.Controllers
 
         // PUT api/<controller>/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult Put(Guid id, CONTACT contact)
+        public IHttpActionResult Put(long id, CONTACT contact)
         {
             _repository.Put(id, contact);
             return StatusCode(HttpStatusCode.NoContent);
         }
 
         // DELETE api/<controller>/5
-        public IHttpActionResult Delete(Guid id)
+        public IHttpActionResult Delete(long id)
         {
             _repository.Delete(id);
             return StatusCode(HttpStatusCode.NoContent);

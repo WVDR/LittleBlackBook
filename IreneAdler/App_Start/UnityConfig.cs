@@ -18,7 +18,7 @@ namespace IreneAdler
             // it is NOT necessary to register your controllers
 
             // e.g. container.RegisterType<ITestService, TestService>();
-            container.RegisterType<IDataAccessRepository<CONTACT, Guid>, ClsDataAccessRepository>();
+            container.RegisterType<IDataAccessRepository<CONTACT, long>, ClsDataAccessRepository>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
